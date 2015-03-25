@@ -30,9 +30,7 @@ class book{
         targetShelf.booksOnShelf.removeAtIndex(indexNumber)
       }
       ++x
-      
-    
-  }
+    }
   
 }
 }

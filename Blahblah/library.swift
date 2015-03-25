@@ -18,17 +18,19 @@ class library{
     let nameOfLibrary = nameOfLibrary
   }
   
-  func listAllBooks()->String{
+  func listAllBooks(){
+    println("The following is a complete list of books: ")
     let count = self.listOfShelves.count
     var x = 0
-    var temparray = [listOfShelves]
-    while (x<=count){
-      temparray = self.listOfShelves[x].booksOnShelf
+    var i = 0
+    var temparray = self.listOfShelves
+    while (x<count){
+      let innercount = temparray[x].booksOnShelf.count
+      while (i<innercount){
+        println(temparray[x].booksOnShelf[i].bookname)
+      ++i}
       ++x
     }
-    
-    
-    return nameOfLibrary
   }
   
 

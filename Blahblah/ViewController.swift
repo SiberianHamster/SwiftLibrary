@@ -64,6 +64,8 @@ class ViewController: UIViewController {
     
     seattlePublic.listOfShelves = shelves
     
+    seattlePublic.listAllBooks()
+    
   }
   
 }
