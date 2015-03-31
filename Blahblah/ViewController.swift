@@ -8,15 +8,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  
   var shelves = [shelf]()
   var books = [book]()
+  var listOfLibrary = [library]()
+  
+  
+  @IBOutlet weak var TableView: UITableView!
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.listOfLibrary.count
+  }
+  
+
+
   
   override func viewDidLoad() {
-    super.viewDidLoad()
     
-    let seattlePublic = library(nameOfLibrary: "SeattlePublic")
+    super.viewDidLoad()
+    self.TableView.delegate = self
+    self.TableView.dataSource = self
+    let seattlePublic = library(nOfLibrary: "SeattlePublic")
+    let bellevuePublic = library(nOfLibrary: "BellevuePublic")
+    
+    self.listOfLibrary.append(seattlePublic)
+    self.listOfLibrary.append(bellevuePublic)
   
     let fictionShelf = shelf(shelfName: "fiction")
     let nfictionShelf = shelf(shelfName: "nonfiction")
@@ -68,5 +85,20 @@ class ViewController: UIViewController {
     
   }
   
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let Cell = TableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+    let library = listOfLibrary[indexPath.row].nameOfLibrary
+    Cell.textLabel?.text = library
+    return Cell
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "shelvesView"{
+    var segueNorm = segue.destinationViewController as ShelfViewController
+    var selectedRow = self.TableView.indexPathsForSelectedRows()
+    var library = listOfLibrary[selectedRow!.row].nameOfLibrary
+    segueNorm.selectedLibrary.nameOfLibrary = library
+    }
+  }
 }
 

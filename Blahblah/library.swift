@@ -10,12 +10,13 @@ import Foundation
 
 class library{
 
-  let nameOfLibrary = "Name"
+  var nameOfLibrary = "Name"
   var numberOfShelves = -1
   var listOfShelves = [shelf]()
 
-  init (nameOfLibrary: String){
-    let nameOfLibrary = nameOfLibrary
+  init (nOfLibrary: String){
+    nameOfLibrary = nOfLibrary
+  
   }
   
   func listAllBooks(){
