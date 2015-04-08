@@ -65,21 +65,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     
-    // Testing enshelfing
-    println("Before shelfing: \(nfictionShelf.booksOnShelf.count) books")
-    spiderman1.enshelf(nfictionShelf)
-    println("After shelfing: \(nfictionShelf.booksOnShelf.count)")
-    let testenshelf = (nfictionShelf.booksOnShelf.count)-1
-    println("Book added, \(nfictionShelf.booksOnShelf[testenshelf].bookname)")
+//    // Testing enshelfing
+//    println("Before shelfing: \(nfictionShelf.booksOnShelf.count) books")
+//    spiderman1.enshelf(nfictionShelf)
+//    println("After shelfing: \(nfictionShelf.booksOnShelf.count)")
+//    let testenshelf = (nfictionShelf.booksOnShelf.count)-1
+//    println("Book added, \(nfictionShelf.booksOnShelf[testenshelf].bookname)")
     
-    //Testing unshelfing
-    println("Before unshelfing: \(fictionShelf.booksOnShelf.count) books")
-    println("Shelf has \(fictionShelf.booksOnShelf[0].bookname)")
-    spiderman1.unshelf(fictionShelf)
-    println("After unshelfing: \(fictionShelf.booksOnShelf.count) books")
+//    //Testing unshelfing
+//    println("Before unshelfing: \(fictionShelf.booksOnShelf.count) books")
+//    println("Shelf has \(fictionShelf.booksOnShelf[0].bookname)")
+//    spiderman1.unshelf(fictionShelf)
+//    println("After unshelfing: \(fictionShelf.booksOnShelf.count) books")
     
     
     seattlePublic.listOfShelves = shelves
+    bellevuePublic.listOfShelves = shelves
     
     seattlePublic.listAllBooks()
     
@@ -94,10 +95,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "shelvesView"{
-    var segueNorm = segue.destinationViewController as ShelfViewController
-    var selectedRow = self.TableView.indexPathsForSelectedRows()
-    var library = listOfLibrary[selectedRow!.row].nameOfLibrary
-    segueNorm.selectedLibrary.nameOfLibrary = library
+      var segueNorm = segue.destinationViewController as ShelfViewController
+      var selectedLibrary = self.TableView.indexPathForSelectedRow()
+      var Library = listOfLibrary[selectedLibrary!.row]
+      segueNorm.selectedLibrary = Library
     }
   }
 }

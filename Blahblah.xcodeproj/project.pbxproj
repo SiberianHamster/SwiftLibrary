@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE668A131AD0F81000A11261 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE668A121AD0F81000A11261 /* BookViewController.swift */; };
 		AE77C3B61AC11E96004C63A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77C3B51AC11E96004C63A4 /* AppDelegate.swift */; };
 		AE77C3B81AC11E96004C63A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77C3B71AC11E96004C63A4 /* ViewController.swift */; };
 		AE77C3BB1AC11E96004C63A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE77C3B91AC11E96004C63A4 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE668A121AD0F81000A11261 /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		AE77C3B01AC11E96004C63A4 /* Blahblah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blahblah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE77C3B41AC11E96004C63A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE77C3B51AC11E96004C63A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				AE77C3D71AC12007004C63A4 /* shelf.swift */,
 				AE77C3D91AC12017004C63A4 /* book.swift */,
 				AE77C3B91AC11E96004C63A4 /* Main.storyboard */,
+				AE668A121AD0F81000A11261 /* BookViewController.swift */,
 				AECC7FAF1AC5389100D4E8A0 /* ShelfViewController.swift */,
 				AE77C3BC1AC11E96004C63A4 /* Images.xcassets */,
 				AE77C3BE1AC11E96004C63A4 /* LaunchScreen.xib */,
@@ -227,6 +230,7 @@
 				AE77C3DA1AC12017004C63A4 /* book.swift in Sources */,
 				AE77C3D81AC12007004C63A4 /* shelf.swift in Sources */,
 				AE77C3D61AC11EBD004C63A4 /* library.swift in Sources */,
+				AE668A131AD0F81000A11261 /* BookViewController.swift in Sources */,
 				AE77C3B81AC11E96004C63A4 /* ViewController.swift in Sources */,
 				AE77C3B61AC11E96004C63A4 /* AppDelegate.swift in Sources */,
 				AECC7FB01AC5389100D4E8A0 /* ShelfViewController.swift in Sources */,
