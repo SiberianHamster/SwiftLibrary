@@ -12,6 +12,7 @@ class book : NSObject, NSCoding {
   
   var bookname = "Name"
   var shelfLocation = "Name"
+  var processed = true
   
   init(nameOfBook: String){
     bookname = nameOfBook
@@ -21,7 +22,7 @@ class book : NSObject, NSCoding {
     targetShelf.booksOnShelf.append(self)
   }
   
-  func unshelf(targetShelf: shelf){
+  func unshelf(targetShelf: shelf) -> String {
     let array = targetShelf.booksOnShelf
 //    println("array count= \(array.count)")
     let count = (array.count)-1
@@ -38,7 +39,7 @@ class book : NSObject, NSCoding {
       }
       ++x
     }
-  
+  return bookname
   }
   
   required init(coder aDecoder: NSCoder) {

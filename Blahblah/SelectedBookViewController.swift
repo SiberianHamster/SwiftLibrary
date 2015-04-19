@@ -13,6 +13,7 @@ class SelectedBookViewController: UIViewController {
   @IBOutlet weak var BookLabel: UILabel!
   
   @IBAction func Unshelf(sender: UIButton) {selectedBook.unshelf(shelfLocation)
+    selectedBook.processed = false
   }
   
   var shelfLocation = shelf(shelfName: "TestShelf")
@@ -22,6 +23,6 @@ class SelectedBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       BookLabel.text = selectedBookName
-    }
-
+  }
+  
 }

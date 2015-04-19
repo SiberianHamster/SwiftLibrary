@@ -28,6 +28,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     TableView.reloadData()
+    var i = 0
+    while (i<books.count){
+    var booklist = books[i].processed
+    if booklist == false {
+      reShelf.booksOnShelf.append(books[i])
+      books[i].processed = true}
+    ++i
+    }
+    
     self.saveToArchive()
   }
   
@@ -143,5 +152,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     return path
     
   }
+
 }
+
+//var i = 0
+//while (i<books.count){
+//  var booklist = books[i].shelfLocation
+//  if booklist == "reShelf" {reShelf.booksOnShelf.append(books[i])}
+//  ++i
+//}
 
