@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>bookname</key>
+		<string>Cinderella</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Snow White and the Seven Dwarves</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Sleeping Beauty</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Beauty and the Beast</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Aladdin</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Tangled</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Frog Princess</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>Frozen</string>
+		<key>shelfLocation</key>
+		<string>fiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>How to Fly</string>
+		<key>shelfLocation</key>
+		<string>nfiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>How to Drive</string>
+		<key>shelfLocation</key>
+		<string>nfiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>How to Type</string>
+		<key>shelfLocation</key>
+		<string>nfiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>How to Read</string>
+		<key>shelfLocation</key>
+		<string>nfiction</string>
+	</dict>
+	<dict>
+		<key>bookname</key>
+		<string>How to Speak Spanish in Spanish</string>
+		<key>shelfLocation</key>
+		<string>nfiction</string>
+	</dict>
+</array>
+</plist>

@@ -13,16 +13,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   var shelves = [shelf]()
   var books = [book]()
   var listOfLibrary = [library]()
+  var fictionShelf = shelf(shelfName: "fiction")
+  var nfictionShelf = shelf(shelfName: "nonfiction")
+  var reShelf = shelf(shelfName: "reshelf")
   
   
   @IBOutlet weak var TableView: UITableView!
   
+
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.listOfLibrary.count
   }
-  
-
-
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    TableView.reloadData()
+    self.saveToArchive()
+  }
   
   override func viewDidLoad() {
     
@@ -35,55 +42,42 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     self.listOfLibrary.append(seattlePublic)
     self.listOfLibrary.append(bellevuePublic)
   
-    let fictionShelf = shelf(shelfName: "fiction")
-    let nfictionShelf = shelf(shelfName: "nonfiction")
-    let reShelf = shelf(shelfName: "reshelf")
+    fictionShelf = shelf(shelfName: "fiction")
+    nfictionShelf = shelf(shelfName: "nonfiction")
+    reShelf = shelf(shelfName: "reshelf")
     self.shelves.append(fictionShelf)
     self.shelves.append(nfictionShelf)
     self.shelves.append(reShelf)
     
-    let spiderman1 = book(nameOfBook: "Spiderman 1")
-    let artOfWar = book(nameOfBook: "The Art of War")
-    let bookOfWar = book(nameOfBook: "Zapp Brannigan's Big Book of War")
-    let spaceBook = book(nameOfBook: "Junior Color Encyclopedia of Space")
-    fictionShelf.booksOnShelf.append(spiderman1)
-    nfictionShelf.booksOnShelf.append(artOfWar)
-    nfictionShelf.booksOnShelf.append(bookOfWar)
-    nfictionShelf.booksOnShelf.append(spaceBook)
-
-    //Library object aware of number of shelves.
-    seattlePublic.numberOfShelves = self.shelves.count
-    println("seattlePublic object has \(seattlePublic.numberOfShelves) shelves")
-  
-    //Shelf is aware of what book is on it
-    var test = nfictionShelf.booksOnShelf[0].bookname
-    var test2 = nfictionShelf.booksOnShelf[1].bookname
-    var test3 = nfictionShelf.booksOnShelf[2].bookname
-    println("nfictionShelf object knows the book \(test)")
-    println("nfictionShelf object knows the book \(test2)")
-    println("nfictionShelf object knows the book \(test3)")
+    self.loadFromArchive()
     
     
-    
-//    // Testing enshelfing
-//    println("Before shelfing: \(nfictionShelf.booksOnShelf.count) books")
-//    spiderman1.enshelf(nfictionShelf)
-//    println("After shelfing: \(nfictionShelf.booksOnShelf.count)")
-//    let testenshelf = (nfictionShelf.booksOnShelf.count)-1
-//    println("Book added, \(nfictionShelf.booksOnShelf[testenshelf].bookname)")
-    
-//    //Testing unshelfing
-//    println("Before unshelfing: \(fictionShelf.booksOnShelf.count) books")
-//    println("Shelf has \(fictionShelf.booksOnShelf[0].bookname)")
-//    spiderman1.unshelf(fictionShelf)
-//    println("After unshelfing: \(fictionShelf.booksOnShelf.count) books")
-    
+    println("Books.count \(self.books.count)")
+    if self.books.isEmpty {
+      println("loading from plist")
+      if let filePath = NSBundle.mainBundle().pathForResource("Book", ofType: "plist") {
+        if let plistArray = NSArray(contentsOfFile: filePath) {
+          for bookObject in plistArray {
+            if let bookDictionary = bookObject as? NSDictionary {
+              let nameofbook = bookDictionary["bookname"] as String
+              let shelflocation = bookDictionary["shelfLocation"] as String
+              let addbook = book(nameOfBook: nameofbook)
+              if (shelflocation == "fiction"){
+                fictionShelf.booksOnShelf.append(addbook)
+              addbook.shelfLocation = "fiction"}
+              else if (shelflocation == "nfiction"){nfictionShelf.booksOnShelf.append(addbook)
+              addbook.shelfLocation = "nfiction"}
+              else{reShelf.booksOnShelf.append(addbook)
+              addbook.shelfLocation = "reShelf"}
+            
+          }
+        }
+      }}
+    saveToArchive()
+    }
     
     seattlePublic.listOfShelves = shelves
     bellevuePublic.listOfShelves = shelves
-    
-    seattlePublic.listAllBooks()
-    
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -100,6 +94,54 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       var Library = listOfLibrary[selectedLibrary!.row]
       segueNorm.selectedLibrary = Library
     }
+  }
+  
+  
+  func loadFromArchive() {
+    println("Begin loading")
+    let path = getDocumentsPath()
+    let arrayFromArchive = NSKeyedUnarchiver.unarchiveObjectWithFile(path + "/MyArchive") as? [book]
+    if arrayFromArchive != nil {
+      self.books = arrayFromArchive!
+      println(books.count)
+      var x = 0
+      while x<(books.count) {
+      var addbook = books[x]
+      
+        if (addbook.shelfLocation=="fiction"){
+        fictionShelf.booksOnShelf.append(addbook)}
+        else if (addbook.shelfLocation=="nfiction"){
+        nfictionShelf.booksOnShelf.append(addbook)}
+        else {reShelf.booksOnShelf.append(addbook)}
+        ++x
+      }
+      
+  }
+    println("End loading")
+  
+  }
+  
+  func saveToArchive() {
+    println("Begin Saving")
+  
+    books = nfictionShelf.booksOnShelf
+    books += fictionShelf.booksOnShelf
+    books += reShelf.booksOnShelf
+    println("book shelf loca\(nfictionShelf.booksOnShelf[1].shelfLocation)")
+    println("book shelf loca\(books[1].shelfLocation)")
+    let path = self.getDocumentsPath()
+    println("Books being saved \(books.count)")
+    NSKeyedArchiver.archiveRootObject(self.books, toFile: path + "/MyArchive")
+    println("End Saving")
+  }
+  
+  func getDocumentsPath() -> String {
+    println("Begin getting path")
+    let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+    let path = paths.first as String
+    println(path + " End getting path")
+    return path
+    
   }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE37E9BE1AD4F8E500A9918C /* Book.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE37E9BD1AD4F8E500A9918C /* Book.plist */; };
+		AE4723351ADB24B000DE79BA /* SelectedBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4723341ADB24B000DE79BA /* SelectedBookViewController.swift */; };
 		AE668A131AD0F81000A11261 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE668A121AD0F81000A11261 /* BookViewController.swift */; };
 		AE77C3B61AC11E96004C63A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77C3B51AC11E96004C63A4 /* AppDelegate.swift */; };
 		AE77C3B81AC11E96004C63A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77C3B71AC11E96004C63A4 /* ViewController.swift */; };
@@ -31,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE37E9BA1AD4F86300A9918C /* Blahblah-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blahblah-Bridging-Header.h"; sourceTree = "<group>"; };
+		AE37E9BD1AD4F8E500A9918C /* Book.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Book.plist; sourceTree = "<group>"; };
+		AE4723341ADB24B000DE79BA /* SelectedBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedBookViewController.swift; sourceTree = "<group>"; };
 		AE668A121AD0F81000A11261 /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		AE77C3B01AC11E96004C63A4 /* Blahblah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blahblah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE77C3B41AC11E96004C63A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,11 +98,14 @@
 				AE77C3D71AC12007004C63A4 /* shelf.swift */,
 				AE77C3D91AC12017004C63A4 /* book.swift */,
 				AE77C3B91AC11E96004C63A4 /* Main.storyboard */,
+				AE4723341ADB24B000DE79BA /* SelectedBookViewController.swift */,
 				AE668A121AD0F81000A11261 /* BookViewController.swift */,
 				AECC7FAF1AC5389100D4E8A0 /* ShelfViewController.swift */,
+				AE37E9BD1AD4F8E500A9918C /* Book.plist */,
 				AE77C3BC1AC11E96004C63A4 /* Images.xcassets */,
 				AE77C3BE1AC11E96004C63A4 /* LaunchScreen.xib */,
 				AE77C3B31AC11E96004C63A4 /* Supporting Files */,
+				AE37E9BA1AD4F86300A9918C /* Blahblah-Bridging-Header.h */,
 			);
 			path = Blahblah;
 			sourceTree = "<group>";
@@ -210,6 +218,7 @@
 				AE77C3BB1AC11E96004C63A4 /* Main.storyboard in Resources */,
 				AE77C3C01AC11E96004C63A4 /* LaunchScreen.xib in Resources */,
 				AE77C3BD1AC11E96004C63A4 /* Images.xcassets in Resources */,
+				AE37E9BE1AD4F8E500A9918C /* Book.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +240,7 @@
 				AE77C3D81AC12007004C63A4 /* shelf.swift in Sources */,
 				AE77C3D61AC11EBD004C63A4 /* library.swift in Sources */,
 				AE668A131AD0F81000A11261 /* BookViewController.swift in Sources */,
+				AE4723351ADB24B000DE79BA /* SelectedBookViewController.swift in Sources */,
 				AE77C3B81AC11E96004C63A4 /* ViewController.swift in Sources */,
 				AE77C3B61AC11E96004C63A4 /* AppDelegate.swift in Sources */,
 				AECC7FB01AC5389100D4E8A0 /* ShelfViewController.swift in Sources */,
@@ -356,9 +366,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Blahblah/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Blahblah/Blahblah-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -366,9 +379,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Blahblah/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Blahblah/Blahblah-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -18,7 +18,6 @@ class ShelfViewController: UIViewController, UITableViewDelegate, UITableViewDat
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return selectedLibrary.listOfShelves.count
   }
-
   
   override func viewDidLoad() {
     super.viewDidLoad()

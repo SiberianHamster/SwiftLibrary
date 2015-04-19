@@ -24,6 +24,11 @@ class BookViewController: UIViewController, UITableViewDataSource, UITableViewDe
       self.TableView.delegate = self
       self.TableView.dataSource = self
     }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    TableView.reloadData()
+  }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let Cell = TableView.dequeueReusableCellWithIdentifier("bookCell", forIndexPath: indexPath) as UITableViewCell
@@ -32,5 +37,16 @@ class BookViewController: UIViewController, UITableViewDataSource, UITableViewDe
     return Cell
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "selectedBookSeg" {
+      var segueNorm = segue.destinationViewController as
+      SelectedBookViewController
+      var selectedBook = self.TableView.indexPathForSelectedRow()
+      var Book = selectShelf.booksOnShelf[selectedBook!.row]
+      segueNorm.selectedBookName = Book.bookname
+      segueNorm.selectedBook = Book
+      segueNorm.shelfLocation = selectShelf
+    }}
+
 
 }
